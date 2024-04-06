@@ -13,11 +13,4 @@
     </div>
 </section>
 
-<section class="section">
-    <div class="container">
-        <div class="row">
-            <h2>Welcome!</h2>
-        </div>
-    </div>
-</section>
 @endsection

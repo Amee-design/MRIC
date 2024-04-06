@@ -40,9 +40,11 @@
 		<header>
 			<div class="headerbar">
                 <div class="container">
-					<div class="logobar"> <a href="https://themesbox.in" data-wpel-link="internal"> <img
-								src="https://themesbox.in/wp-content/themes/themesbox/assets/images/logo.svg"
-								class="img-fluid" alt="logo"> </a></div>
+					<div class="logobar">
+                        <a href="{{route('home.index')}}" data-wpel-link="internal">
+                            <img src="#" class="img-fluid" alt="logo">
+                        </a>
+                    </div>
 					<div class="menubar">
 						<div class="navigationbar">
 							<div class="menu-extras">
@@ -53,74 +55,32 @@
 							<div class="menu-container">
 								<div class="menu-main-menu-container">
 									<ul id="menu-main-menu" class="navigation-menu">
-										<li id="nav-menu-item-59"
-											class="has-submenu main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
-											<a href="#" class="menu-link main-menu-link">Categories</a>
-											<div><span class="menu-arrow"></span></div>
-											<ul class="submenu menu-odd  menu-depth-1">
-												<li id="nav-menu-item-60"
-													class="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-taxonomy menu-item-object-download_category">
-													<a href="https://themesbox.in/item/category/admin-templates/"
-														class="menu-link sub-menu-link" data-wpel-link="internal">Admin
-														Templates</a></li>
-												<li id="nav-menu-item-61"
-													class="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-taxonomy menu-item-object-download_category">
-													<a href="https://themesbox.in/item/category/landing-pages/"
-														class="menu-link sub-menu-link"
-														data-wpel-link="internal">Landing Pages</a></li>
-												<li id="nav-menu-item-63"
-													class="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-taxonomy menu-item-object-download_category">
-													<a href="https://themesbox.in/item/category/wordpress-themes/"
-														class="menu-link sub-menu-link"
-														data-wpel-link="internal">WordPress Themes</a></li>
-												<li id="nav-menu-item-62"
-													class="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-taxonomy menu-item-object-download_category">
-													<a href="https://themesbox.in/item/category/psd-templates/"
-														class="menu-link sub-menu-link" data-wpel-link="internal">PSD
-														Templates</a></li>
-											</ul>
-										</li>
+
 										<li id="nav-menu-item-64"
 											class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-taxonomy menu-item-object-download_category">
-											<a href="https://themesbox.in/item/category/freebies/"
-												class="menu-link main-menu-link" data-wpel-link="internal">Freebies</a>
+											<a href="#" class="menu-link main-menu-link" data-wpel-link="internal">Home</a>
 										</li>
-										<li id="nav-menu-item-57"
-											class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page current_page_parent">
-											<a href="https://themesbox.in/blog/" class="menu-link main-menu-link"
-												data-wpel-link="internal">Blog</a></li>
-										<li id="nav-menu-item-58"
-											class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
-											<a href="https://themesbox.in/support/" class="menu-link main-menu-link"
-												data-wpel-link="internal">Support</a></li>
-										<li id="nav-menu-item-35"
-											class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page login-btn">
-											<a class="menu-link main-menu-link btn btn-primary" id="show_login" href=""
-												data-wpel-link="internal">Login</a></li>
-										<li id="nav-menu-item-36"
-											class="has-submenu main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children minicart-menu">
-											<a class="menu-link main-menu-link" href="#"><i
-													class="feather icon-shopping-cart"></i><span
-													class="cart-notify">0</span></a>
-											<div><span class="menu-arrow d-md-block d-lg-none"></span></div>
-											<ul class="submenu menu-odd menu-depth-1">
-												<li
-													class="sub-menu-item  menu-item-odd menu-item-depth-1 menu-item menu-item-type-taxonomy menu-item-object-download_category">
-													<p class="edd-cart-number-of-items" style="display:none;">Number of
-														items in cart: <span class="edd-cart-quantity">0</span></p>
-													<ul class="edd-cart">
-														<li class="cart_item empty"><span class="edd_empty_cart">Your
-																cart is empty.</span></li>
-														<li class="cart_item edd-cart-meta edd_total"
-															style="display:none;">Total: <span
-																class="cart-total">&#36;0.00</span></li>
-														<li class="cart_item edd_checkout" style="display:none;"><a
-																href="https://themesbox.in/checkout/"
-																data-wpel-link="internal">Checkout</a></li>
-													</ul>
-												</li>
-											</ul>
-										</li>
+
+										<li id="nav-menu-item-57" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page current_page_parent">
+											<a href="#" class="menu-link main-menu-link" data-wpel-link="internal">About Us</a>
+                                        </li>
+
+										<li id="nav-menu-item-58" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
+											<a href="#" class="menu-link main-menu-link" data-wpel-link="internal">Events</a>
+                                        </li>
+
+                                        <li id="nav-menu-item-58" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
+                                            <a href="#" class="menu-link main-menu-link" data-wpel-link="internal">Donations</a>
+                                        </li>
+
+										<li id="nav-menu-item-35" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page login-btn">
+											<a class="menu-link main-menu-link btn btn-primary" id="show_login" href="#" data-wpel-link="internal">Sign Up</a>
+                                        </li>
+
+										<li id="nav-menu-item-35" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page login-btn">
+											<a class="menu-link main-menu-link btn btn-secondary" id="show_login" href="#" data-wpel-link="internal">Sign In</a>
+                                        </li>
+
 									</ul>
 								</div>
 							</div>
@@ -140,18 +100,14 @@
 							<div id="text-2" class="widget widget_text list-unstyled">
 								<h5 class="widgettitle">About Us</h5>
 								<div class="textwidget">
-									<p>We take care of all your IT related solutions with creativity &#038; passion. We
-										develop products with maximum attention to details. From, Designing to
-										Development we keep in mind every aspect that affects your Product, Value and
-										Appearance. Cheers !!</p>
+									<p>[Short Description Here]</p>
 								</div>
 							</div>
 							<div id="themesbox-social-widget-2" class="widget widget_themesbox_social list-unstyled">
 								<h5 class="widgettitle">Follows Us</h5>
 								<ul class="socials">
-									<li><a href="https://www.facebook.com/Themes-Box-104644314374974/" target="_blank"
-											data-wpel-link="external" rel="external noopener noreferrer"> <i
-												class="feather icon-facebook"></i> </a></li>
+									<li><a href="https://www.facebook.com/#" target="_blank" data-wpel-link="external" rel="external noopener noreferrer">
+                                        <i class="feather icon-facebook"></i> </a></li>
 									<li><a href="#" target="_blank"> <i class="feather icon-instagram"></i> </a></li>
 								</ul>
 							</div>
@@ -179,18 +135,11 @@
 								<h5 class="widgettitle">Quick Links</h5>
 								<div class="textwidget">
 									<ul class="list-unstyled mb-0">
-										<li><a href="#" data-wpel-link="internal">Blog</a></li>
-										<li><a href="#
-												data-wpel-link="internal">Support</a></li>
-										<li><a href="#"
-												data-wpel-link="internal">Privacy Policy</a></li>
-										<li><a href="#"
-												data-wpel-link="internal">Terms &amp; Conditions</a></li>
-										<li><a href="#"
-												data-wpel-link="internal">Refund Policy</a></li>
-										<li><a href="#"
-												data-wpel-link="external"
-												rel="external noopener noreferrer">Crazydomains</a></li>
+										<li><a href="#" data-wpel-link="internal">About Us</a></li>
+										<li><a href="#" data-wpel-link="internal">Events</a></li>
+                                        <li><a href="#" data-wpel-link="internal">Donations</a></li>
+										<li><a href="#" data-wpel-link="internal">Privacy Policy</a></li>
+										<li><a href="#" data-wpel-link="internal">Terms &amp; Conditions</a></li>
 									</ul>
 								</div>
 							</div>
@@ -200,7 +149,8 @@
 			</div>
 			<div class="footer-bottom">
 				<div class="container">
-					<p class="mb-0 text-white">© 2021. Timanet</p>
+					<p class="mb-0 text-white">&copy; {{date('Y')}}. Muhammad Rasulullah
+                        Islamic Centre</p>
 				</div>
 			</div>
 		</footer>
