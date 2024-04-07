@@ -7,7 +7,7 @@
 	<meta name="keywords" content="">
 	<meta name="author" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-	<link rel="shortcut icon" href="">
+	<link rel="shortcut icon" href="{{asset('main/images/logo.png')}}">
 
     <meta name='robots' content='noindex, follow' />
 
@@ -22,15 +22,8 @@
 	<link rel='dns-prefetch' href='//s.w.org' />
 	<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
 
-	<link rel="preload" as="style"
-		href="https://fonts.googleapis.com/css?family=Muli:400,600,700%7CPoppins:600,700&#038;display=swap&#038;ver=1611306310" />
-	<link rel="stylesheet"
-		href="https://fonts.googleapis.com/css?family=Muli:400,600,700%7CPoppins:600,700&#038;display=swap&#038;ver=1611306310"
-		media="print" onload="this.media='all'">
-    <noscript>
-	    <link rel="stylesheet"
-			href="https://fonts.googleapis.com/css?family=Muli:400,600,700%7CPoppins:600,700&#038;display=swap&#038;ver=1611306310" />
-	</noscript>
+	<link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Muli:400,600,700%7CPoppins:600,700&#038;display=swap&#038;ver=1611306310" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script type="text/javascript" src="{{asset('landing/assets/js/jquery.min.js?ver=3.6.0')}}" id='jquery-core-js'></script>
 
 </head>
@@ -42,7 +35,7 @@
                 <div class="container">
 					<div class="logobar">
                         <a href="{{route('home.index')}}" data-wpel-link="internal">
-                            <img src="#" class="img-fluid" alt="logo">
+                            <img src="{{asset('main/images/logo.png')}}" style="width: 100px!important" class="img-fluid" alt="logo">
                         </a>
                     </div>
 					<div class="menubar">
@@ -62,15 +55,19 @@
 										</li>
 
 										<li id="nav-menu-item-57" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page current_page_parent">
-											<a href="#" class="menu-link main-menu-link" data-wpel-link="internal">About Us</a>
+											<a href="#about" class="menu-link main-menu-link" data-wpel-link="internal">About Us</a>
                                         </li>
 
 										<li id="nav-menu-item-58" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
-											<a href="#" class="menu-link main-menu-link" data-wpel-link="internal">Events</a>
+											<a href="#events" class="menu-link main-menu-link" data-wpel-link="internal">Events</a>
                                         </li>
 
                                         <li id="nav-menu-item-58" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
                                             <a href="#" class="menu-link main-menu-link" data-wpel-link="internal">Donations</a>
+                                        </li>
+
+                                        <li id="nav-menu-item-58" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
+                                            <a href="#" class="menu-link main-menu-link" data-wpel-link="internal">Store</a>
                                         </li>
 
 										<li id="nav-menu-item-35" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page login-btn">
@@ -78,7 +75,7 @@
                                         </li>
 
 										<li id="nav-menu-item-35" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page login-btn">
-											<a class="menu-link main-menu-link btn btn-secondary" id="show_login" href="#" data-wpel-link="internal">Sign In</a>
+											<a class="menu-link main-menu-link btn btn-secondary bg-success text-white" id="show_login" href="#" data-wpel-link="internal">Sign In</a>
                                         </li>
 
 									</ul>
