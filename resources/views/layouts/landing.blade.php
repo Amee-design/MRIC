@@ -71,11 +71,11 @@
                                         </li>
 
 										<li id="nav-menu-item-35" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page login-btn">
-											<a class="menu-link main-menu-link btn btn-primary" id="show_login" href="#" data-wpel-link="internal">Sign Up</a>
+											<a class="menu-link main-menu-link btn btn-primary" id="show_login" href="{{route('register')}}" data-wpel-link="internal">Sign Up</a>
                                         </li>
 
 										<li id="nav-menu-item-35" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page login-btn">
-											<a class="menu-link main-menu-link btn btn-secondary bg-success text-white" id="show_login" href="#" data-wpel-link="internal">Sign In</a>
+											<a class="menu-link main-menu-link btn btn-secondary bg-success text-white" id="show_login" href="{{route('login')}}" data-wpel-link="internal">Sign In</a>
                                         </li>
 
 									</ul>

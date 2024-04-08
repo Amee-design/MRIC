@@ -52,4 +52,9 @@ class HomeController extends Controller
         $this->updateSiteViews();
         return view('contact')->with('title', 'Contact Us | MRIC');
     }
+
+    public function onHold()
+    {
+        return view('onhold')->with('title', 'Account On-hold | MRIC');
+    }
 }

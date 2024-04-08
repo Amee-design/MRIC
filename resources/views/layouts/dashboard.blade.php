@@ -11,25 +11,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <title>@yield('title')</title>
     <!-- Fevicon -->
-    <link rel="shortcut icon" href="{{ asset('assets/images/logo.png') }}">
+    <link rel="shortcut icon" href="{{ asset('main/images/logo.png') }}">
     <!-- Start css -->
     <!-- Switchery css -->
-    <link href="{{ asset('assets/plugins/switchery/switchery.min.css') }}" rel="stylesheet">
-    <link href="{{asset('assets/plugins/apexcharts/apexcharts.css')}}" rel="stylesheet">
+    <link href="{{ asset('main/plugins/switchery/switchery.min.css') }}" rel="stylesheet">
+    <link href="{{asset('main/plugins/apexcharts/apexcharts.css')}}" rel="stylesheet">
 
     <!-- Slick css -->
-    <link href="{{asset('assets/plugins/slick/slick.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/plugins/slick/slick-theme.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/plugins/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('main/plugins/slick/slick.css')}}" rel="stylesheet">
+    <link href="{{asset('main/plugins/slick/slick-theme.css')}}" rel="stylesheet">
+    <link href="{{asset('main/plugins/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
     <!-- Responsive Datatable css -->
-    <link href="{{asset('assets/plugins/datatables/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('main/plugins/datatables/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('main/plugins/datatables/responsive.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
     <!-- Calendar css -->
-    <link href="{{ asset('assets/plugins/fullcalendar/css/fullcalendar.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets/css/flag-icon.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('main/plugins/fullcalendar/css/fullcalendar.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('main/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('main/css/icons.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('main/css/flag-icon.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('main/css/style.css') }}" rel="stylesheet" type="text/css">
     <!-- End css -->
 </head>
 
@@ -43,10 +43,10 @@
                 <!-- Start Logobar -->
                 <div class="logobar">
                     <a href="{{route('admin.home')}}" class="logo logo-large">
-                        <img src="{{ asset('assets/images/logo.png') }}" style="width:80px; height:80px;"
+                        <img src="{{ asset('main/images/logo.png') }}" style="width:80px; height:80px;"
                             class="img-fluid" alt="logo"></a>
                     <a href="{{route('admin.home')}}" class="logo logo-small"><img
-                            src="{{ asset('assets/images/logo.png') }}"style="width:80px; height:80px;" class="img-fluid"
+                            src="{{ asset('main/images/logo.png') }}"style="width:80px; height:80px;" class="img-fluid"
                             alt="logo"></a>
                 </div>
                 <!-- End Logobar -->
@@ -62,69 +62,44 @@
                         </li>
                         <li>
                             <a href="javaScript:void();">
-                                <i class="ri-user-6-fill"></i><span>Users</span>
+                                <i class="ri-user-6-fill"></i><span>Members</span>
                                 <i class="ri-arrow-right-s-line"></i>
                             </a>
                             <ul class="vertical-submenu">
-                                <li><a href="{{route('admin.users', ['type'=>'administrators'])}}">Administrators</a></li>
-                                <li><a href="{{route('admin.users', ['type'=>'instructors'])}}">instructors</a></li>
-                                <li><a href="{{route('admin.users', ['type'=>'students'])}}">Students</a></li>
+                                <li><a href="{{route('admin.users', ['type'=>'verified'])}}">Verified</a></li>
+                                <li><a href="{{route('admin.users', ['type'=>'unverified'])}}">Unverified</a></li>
                             </ul>
-                        </li>
-
-                        <li>
-                            <a href="javaScript:void();">
-                                <i class="ri-pie-chart-fill"></i><span>Categories</span>
-                                <i class="ri-arrow-right-s-line"></i>
-                            </a>
-                            <ul class="vertical-submenu">
-                                <li>
-                                    <a href="{{route('admin.categories')}}">
-                                        Categories
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{route('admin.subCategories')}}">
-                                        Sub Categories
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a href="{{route('admin.courses')}}">
-                                <i class="ri-book-2-fill"></i><span>Courses</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="{{route('admin.purchases')}}">
-                                <i class="ri-shopping-bag-fill"></i><span>Purchases</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="{{route('admin.lessons')}}">
-                                <i class="ri-file-text-line"></i><span>Lessons</span>
-                            </a>
                         </li>
 
                         <li>
                             <a href="javascript:void(0)">
-                                <i class="ri-file-list-line"></i><span>Blog</span>
+                                <i class="ri-file-list-line"></i><span>Events</span>
                             <i class="ri-arrow-right-s-line"></i>
                             </a>
                             <ul class="vertical-submenu">
-                                <li><a href="{{route('admin.blogCategories')}}">Categories</a></li>
-                                <li><a href="{{route('admin.blogPosts')}}">Posts</a></li>
+                                <li><a href="#">Event Categories</a></li>
+                                <li><a href="#">Post Event</a></li>
+                                <li><a href="#">All Events</a></li>
                             </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="ri-shopping-bag-fill"></i><span>Donations</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="ri-shopping-cart-line"></i><span>Store</span>
+                            </a>
                         </li>
 
                         <li class="vertical-header"></li>
 
-                        @elseif(Str::contains(Route::currentRouteName(), 'instructor'))
+                        @elseif(Str::contains(Route::currentRouteName(), 'account'))
                         <li>
-                            <a href="{{route('instructor.home')}}">
+                            <a href="#">
                                 <i class="ri-home-4-fill"></i><span>Dashboard</span>
                             </a>
                         </li>
@@ -145,24 +120,7 @@
                                 <i class="ri-file-text-line"></i><span>Lessons</span>
                             </a>
                         </li>
-                        @elseif(Str::contains(Route::currentRouteName(), 'student'))
-                        <li>
-                            <a href="{{route('student.home')}}">
-                                <i class="ri-home-4-fill"></i><span>Dashboard</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="ri-book-2-fill"></i><span>My Courses</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="ri-file-text-line"></i><span>My Lessons</span>
-                            </a>
-                        </li>
                         @endif
-
                     </ul>
                 </div>
                 <!-- End Navigationbar -->
@@ -181,7 +139,7 @@
                 <div class="col-md-12">
                     <div class="mobile-logobar">
                         <a href="#" class="mobile-logo">
-                            <img src="{{ asset('assets/images/logo.png') }}" style="width:60px; height:60px;" class="img-fluid" alt="logo">
+                            <img src="{{ asset('main/images/logo.png') }}" style="width:60px; height:60px;" class="img-fluid" alt="logo">
                         </a>
                     </div>
                     <div class="mobile-togglebar">
@@ -270,7 +228,7 @@
                                 <div class="profilebar">
                                     <div class="dropdown">
                                         <a class="dropdown-toggle" href="#" role="button" id="profilelink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <img src="{{asset('assets/images/users/profile.svg')}}" class="img-fluid" alt="profile">
+                                            <img src="{{asset('main/images/users/profile.svg')}}" class="img-fluid" alt="profile">
                                             <span class="live-icon">{{auth()->user()->email}}</span>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profilelink">
@@ -298,7 +256,7 @@
         <!-- Start Footerbar -->
         <div class="footerbar">
             <footer class="footer">
-                <p class="mb-0">&copy; {{date('Y')}} DarlCreativeHub - All Rights Reserved.</p>
+                <p class="mb-0">&copy; {{date('Y')}} Muhammad Rasulullah Islamic Centre - All Rights Reserved.</p>
             </footer>
         </div>
         <!-- End Footerbar -->
@@ -306,44 +264,44 @@
     <!-- End Rightbar -->
 
     <!-- Start js -->
-    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
-    <script src="{{asset('assets/js/popper.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/js/modernizr.min.js')}}"></script>
-    <script src="{{asset('assets/js/detect.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.slimscroll.js')}}"></script>
-    <script src="{{asset('assets/js/vertical-menu.js')}}"></script>
+    <script src="{{asset('main/js/jquery.min.js')}}"></script>
+    <script src="{{asset('main/js/popper.min.js')}}"></script>
+    <script src="{{asset('main/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('main/js/modernizr.min.js')}}"></script>
+    <script src="{{asset('main/js/detect.js')}}"></script>
+    <script src="{{asset('main/js/jquery.slimscroll.js')}}"></script>
+    <script src="{{asset('main/js/vertical-menu.js')}}"></script>
 
     <!-- Datatable js -->
-    <script src="{{asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables/dataTables.buttons.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables/buttons.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables/jszip.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables/pdfmake.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables/vfs_fonts.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables/buttons.html5.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables/buttons.print.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables/buttons.colVis.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables/dataTables.responsive.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatables/responsive.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('assets/js/custom/custom-table-datatable.js')}}"></script>
+    <script src="{{asset('main/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('main/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('main/plugins/datatables/dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('main/plugins/datatables/buttons.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('main/plugins/datatables/jszip.min.js')}}"></script>
+    <script src="{{asset('main/plugins/datatables/pdfmake.min.js')}}"></script>
+    <script src="{{asset('main/plugins/datatables/vfs_fonts.js')}}"></script>
+    <script src="{{asset('main/plugins/datatables/buttons.html5.min.js')}}"></script>
+    <script src="{{asset('main/plugins/datatables/buttons.print.min.js')}}"></script>
+    <script src="{{asset('main/plugins/datatables/buttons.colVis.min.js')}}"></script>
+    <script src="{{asset('main/plugins/datatables/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('main/plugins/datatables/responsive.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('main/js/custom/custom-table-datatable.js')}}"></script>
     <!-- Switchery js -->
-    <script src="{{asset('assets/plugins/switchery/switchery.min.js')}}"></script>
+    <script src="{{asset('main/plugins/switchery/switchery.min.js')}}"></script>
     <!-- jQuery UI -->
-    <script src="{{asset('assets/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/moment/moment.js')}}"></script>
+    <script src="{{asset('main/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+    <script src="{{asset('main/plugins/moment/moment.js')}}"></script>
     <!-- Apex js -->
-    <script src="{{asset('assets/plugins/apexcharts/apexcharts.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/apexcharts/irregular-data-series.js')}}"></script>
+    <script src="{{asset('main/plugins/apexcharts/apexcharts.min.js')}}"></script>
+    <script src="{{asset('main/plugins/apexcharts/irregular-data-series.js')}}"></script>
     <!-- Slick js -->
-    <script src="{{asset('assets/plugins/slick/slick.min.js')}}"></script>
-    <script src="{{asset('assets/js/custom/custom-dashboard-ecommerce.js')}}"></script>
+    <script src="{{asset('main/plugins/slick/slick.min.js')}}"></script>
+    <script src="{{asset('main/js/custom/custom-dashboard-ecommerce.js')}}"></script>
 
-    <script src="{{asset('assets/plugins/fullcalendar/js/fullcalendar.min.js')}}"></script>
-    <script src="{{asset('assets/js/custom/custom-calender.js')}}"></script>
+    <script src="{{asset('main/plugins/fullcalendar/js/fullcalendar.min.js')}}"></script>
+    <script src="{{asset('main/js/custom/custom-calender.js')}}"></script>
     <!-- Core js -->
-    <script src="{{asset('assets/js/core.js')}}"></script>
+    <script src="{{asset('main/js/core.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
     <!-- End js -->
 </body>

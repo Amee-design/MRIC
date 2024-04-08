@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,7 @@ use App\Http\Controllers\HomeController;
 
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('home.index');
+    Route::get('/onhold', 'onHold');
 });
 
 Route::group(['middleware' => 'guest'], function () {
@@ -40,4 +42,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::controller(DashboardController::class)->group(function () {
         Route::get('/admin', 'admin')->name('admin.home');
     });
+    Route::controller(AdminController::class)->group(function () {
+        Route::get('/admin/members/{type}', 'members')->name('admin.users');
+    });
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

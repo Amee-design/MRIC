@@ -22,14 +22,88 @@
     <!-- Start Contentbar -->
     <div class="contentbar">
         <!-- Start row -->
+
+        <!-- Start Contentbar -->
+    <div class="contentbar">
+        <!-- Start row -->
         <div class="row">
             <!-- Start col -->
-            <div class="col-lg-12 col-xl-8">
+            <div class="col-lg-12 col-xl-3">
+                <div class="card m-b-30 border-info">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Total Members</h5>
+                    </div>
+                    <div class="card-body pb-0">
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <h4>0</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End col -->
+            <!-- Start col -->
+            <div class="col-lg-12 col-xl-3">
+                <div class="card m-b-30 border-success">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Verified</h5>
+                    </div>
+                    <div class="card-body pb-0">
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <h4>0</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End col -->
+            <!-- Start col -->
+            <div class="col-lg-12 col-xl-3">
+                <div class="card m-b-30 border-warning">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Unverified</h5>
+                    </div>
+                    <div class="card-body pb-0">
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <h4>0</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End col -->
+            <!-- Start col -->
+            <div class="col-lg-12 col-xl-3">
+                <div class="card m-b-30 border-info">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Total Donations</h5>
+                    </div>
+                    <div class="card-body pb-0">
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <h4>0</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End col -->
+        </div>
+        <!-- End row -->
+    </div>
+    <!-- End Contentbar -->
+
+        <div class="row">
+            <!-- Start col -->
+            <div class="col-lg-12 col-xl-12">
                 <div class="card m-b-30">
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col-6 col-lg-9">
-                                <h5 class="card-title mb-0">Monthly Course Sales Report</h5>
+                                <h5 class="card-title mb-0">Monthly Donations Report</h5>
                             </div>
                             <div class="col-6 col-lg-3">
                                 <select class="form-control font-12">
@@ -48,18 +122,6 @@
                 </div>
             </div>
             <!-- End col -->
-            <!-- Start col -->
-            <div class="col-lg-12 col-xl-4">
-                <div class="card text-center m-b-30">
-                    <div class="card-header">
-                        <h5 class="card-title mb-0">Sales by Category</h5>
-                    </div>
-                    <div class="card-body px-0">
-                        <div id="apex-pie-chart"></div>
-                    </div>
-                </div>
-            </div>
-            <!-- End col -->
         </div>
         <!-- End row -->
         <!-- Start row -->
@@ -70,7 +132,7 @@
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col-9">
-                                <h5 class="card-title mb-0">Recent Course Purchase</h5>
+                                <h5 class="card-title mb-0">Recent Donations</h5>
                             </div>
                             <div class="col-3">
                                 <button type="button" class="btn btn-outline-light text-muted btn-sm float-right font-12">View</button>
@@ -83,9 +145,9 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Course</th>
-                                        <th scope="col">Student</th>
-                                        <th scope="col">Code</th>
+                                        <th scope="col">Transaction ID</th>
+                                        <th scope="col">Member</th>
+                                        <th scope="col">Country</th>
                                         <th scope="col">Amount</th>
                                         <th scope="col">Status</th>
                                     </tr>
@@ -93,64 +155,14 @@
                                 <tbody>
                                     <tr>
                                         <th scope="row">1</th>
-                                        <td>Zebronics Mouse</td>
-                                        <td>Black Smith</td>
-                                        <td>EL265</td>
-                                        <td>$49</td>
+                                        <td>125232454534</td>
+                                        <td>John Doe</td>
+                                        <td>USA</td>
+                                        <td>$49.00</td>
                                         <td><span class="badge badge-primary">Pending</span></td>
                                     </tr>
                                 </tbody>
                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End col -->
-        </div>
-        <!-- End row -->
-        <!-- Start row -->
-        <div class="row">
-            <!-- Start col -->
-            <div class="col-lg-12 col-xl-6">
-                <div class="card m-b-30">
-                    <div class="card-header">
-                        <div class="row align-items-center">
-                            <div class="col-9">
-                                <h5 class="card-title mb-0">Revenue</h5>
-                            </div>
-                            <div class="col-3">
-                                <div class="dropdown">
-                                    <button class="btn btn-link p-0 font-18 float-right" type="button" id="widgetRevenue" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-horizontal-"></i></button>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="widgetRevenue">
-                                        <a class="dropdown-item font-13" href="#">Refresh</a>
-                                        <a class="dropdown-item font-13" href="#">Export</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body py-0 pl-0">
-                        <div id="apex-bar-chart"></div>
-                    </div>
-                </div>
-            </div>
-            <!-- End col -->
-            <!-- Start col -->
-            <div class="col-lg-12 col-xl-6">
-                <div class="card m-b-30">
-                    <div class="card-body text-center">
-                        <h4>$5985</h4>
-                        <p class="card-text">Profit Earned - Feb 20</p>
-                        <div id="apex-line-chart"></div>
-                    </div>
-                    <div class="card-footer text-center">
-                        <div class="row">
-                            <div class="col-6 border-right">
-                                <p class="my-2">Last Month : $9875</p>
-                            </div>
-                            <div class="col-6">
-                                <p class="my-2"><a href="#"><i class="ri-download-line align-middle mr-2"></i>Download Report</a></p>
-                            </div>
                         </div>
                     </div>
                 </div>

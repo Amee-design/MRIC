@@ -78,7 +78,7 @@ class AuthController extends Controller
                 }elseif($user->role == "a"){
                     return redirect()->intended('admin');
                 }else{
-
+                    return redirect()->intended('/onhold');
                 }
 
             }
@@ -116,27 +116,42 @@ class AuthController extends Controller
         // if ($validator->fails()) {
         //     return back()->with('error', 'You need to prove that you are a human!');
         // }
+        try{
+            // Validate the incoming request data
+            $validatedData = $request->validate([
+                'email' => 'required|email|unique:users,email',
+                'password' => 'required|min:8',
+                'fname' => 'required|min:3|max:50',
+                'lname' => 'required|min:3|max:50',
+                'phone' => 'required|min:11|max:15',
+                'country' => 'required|min:5|max:35',
+                'gender' => 'required|min:1|max:2',
+            ]);
 
-        // Validate the incoming request data
-        $validatedData = $request->validate([
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8',
-            'name' => 'required|min:3|max:50',
-            'role' => 'required|min:5|max:15',
-            'phone' => 'required|min:11|max:15',
-        ]);
+            $user = new User();
 
-        $user = new User();
+            $user->email = $validatedData['email'];
+            $user->phone = $validatedData['phone'];
+            $user->country = $validatedData['country'];
+            $user->password = Hash::make($validatedData['password']);
+            $user->fname = $validatedData['fname'];
+            $user->lname = $validatedData['lname'];
+            $user->gender = $validatedData['gender'];
 
-        $user->email = $validatedData['email'];
-        $user->phone = $validatedData['phone'];
-        $user->password = Hash::make($validatedData['password']);
-        $user->name = $validatedData['name'];
+            if ($user->save()) {
+                return back()->with('success', 'Registration successful!');
+            }
+            return back()->with('error', 'Registration failed. Please try again.');
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            $errors = $e->validator->getMessageBag();
+            $errorMessages = '';
 
-        if ($user->save()) {
-            return back()->with('success', 'Registration successful!');
+            foreach ($errors->all() as $error) {
+                $errorMessages .= $error . '.';
+            }
+
+            return back()->with('error', 'Registration failed:<br>' . $errorMessages);
         }
-        return back()->with('error', 'Registration failed. Please try again.');
     }
 
     public function forgotPassword(){

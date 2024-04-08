@@ -34,11 +34,10 @@
                             </div>
                             <div class="card-body">
                                 <form action="#" method="post">
-                                    @csrf;
+                                    @csrf
                                     <div class="form-head">
                                         <a href="{{route('home.index')}}" class="logo">
                                             <img src="{{ asset('main/images/logo.png') }}" class="img-fluid" alt="logo">
-                                            <h5>Welcome to DarlCreativeHub!</h5>
                                         </a>
                                     </div>
                                     <h4 class="text-primary my-4">Log in</h4>
