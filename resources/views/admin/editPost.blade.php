@@ -11,8 +11,10 @@
     $id = $records->id;
 
     if($status == '1'){
+        $status = 'publish';
         $state = "Publish Now";
     }else{
+        $status = 'draft';
         $state = "Save as Draft";
     }
 
@@ -54,10 +56,11 @@
 
                                 @csrf
                                 <div class="row">
+                                    <input type="hidden" value="{{$records->id}}" name="pid">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Title</label>
-                                            <input type="text" name="post_title" required="required" placeholder="post title..." id="form-input-post-title" class="form-control">
+                                            <input type="text" name="post_title" value="{{$title}}" required="required" placeholder="post title..." id="form-input-post-title" class="form-control">
                                         </div>
                                     </div>
                                 </div>

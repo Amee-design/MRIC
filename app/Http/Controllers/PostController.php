@@ -40,11 +40,11 @@ class PostController extends Controller
 
         if($status == "publish"){
 
-            $status = 1;
+            $status = '1';
 
         }else{
 
-            $status = 0;
+            $status = '0';
 
         }
 
@@ -53,6 +53,18 @@ class PostController extends Controller
         if(empty($title) || empty($description) || empty($category) || empty($body) ) {
             return back()->with('error', 'All compulsory fields must be filled!');
         }else{
+
+            $status = $request->post_status;
+
+            if($status == "publish"){
+
+                $status = '1';
+
+            }else{
+
+                $status = '0';
+
+            }
 
             $post = new Post();
             $post->title = $title;
@@ -89,13 +101,21 @@ class PostController extends Controller
 
         $thumbnail = $request->thumbnail;
 
-        $author = $request->author;
-
         $tag = $request->tag;
 
         $body = $request->myTextArea;
 
         $status = $request->post_status;
+
+        if($status == "publish"){
+
+            $status = '1';
+
+        }else{
+
+            $status = '0';
+
+        }
 
         if(empty($title) || empty($description) || empty($category) || empty($body) ) {
             return back()->with('error', 'All compulsory fields must be filled!');
@@ -107,7 +127,7 @@ class PostController extends Controller
             $post->content = $body;
             $post->category_id = $category;
             $post->thumbnail = $thumbnail;
-            $post->user_id = $author;
+            $post->user_id = $post->user_id;
             $post->tags = $tag;
             $post->status = $status;
 

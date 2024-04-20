@@ -58,6 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::controller(PostController::class)->group(function () {
         Route::get('/admin/posts', 'index')->name('admin.posts');
         Route::get('/admin/editPost/{post_id}', 'edit')->name('admin.editPost');
+        Route::post('/admin/editPost/{post_id}', 'update');
         Route::post('/admin/savePost', 'store')->name('admin.savePost');
     });
     Route::controller(SettingController::class)->group(function () {
