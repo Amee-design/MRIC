@@ -59,12 +59,12 @@
                                                 <tr>
                                                     <td>{{$loop->iteration}}</td>
                                                     <td><a href="/b/{{$rec->link}}" target="_blank">{{$rec->title}}</a></td>
-                                                    <td>{{$rec->user->fname}}</td>
+                                                    <td>{{$rec->user->fname}} {{$rec->user->lname}}</td>
                                                     <td>{{$rec->category->title}}</td>
                                                     <td>{{$rec->created_at}}</td>
                                                     <td>{{$rec->views}}</td>
                                                     <td><button onclick="setDraft('{{$rec->id}}')" class="btn btn-warning">Unpub</button></td>
-                                                    <td><a href="/dashboard/editPost/{{$rec->id}}"><button class="btn btn-success">Edit</button></a></td>
+                                                    <td><a href="/admin/editPost/{{$rec->id}}"><button class="btn btn-success">Edit</button></a></td>
                                                     <td><a href="javascript:void(0)"><button class="btn btn-danger" onclick="deletePost('{{$rec->id}}')">Delete</button></a></td>
                                                 </tr>
                                             @endforeach

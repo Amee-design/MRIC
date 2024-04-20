@@ -109,7 +109,7 @@ class PostController extends Controller
             $post->thumbnail = $thumbnail;
             $post->user_id = $author;
             $post->tags = $tag;
-            $post->status = $post_status;
+            $post->status = $status;
 
             if($post->save()) {
 
@@ -124,18 +124,17 @@ class PostController extends Controller
         }
     }
 
-    public function editPost(Request $request)
+    public function edit(Request $request)
     {
-
+        $pid = $request->post_id;
         $records = Post::find($pid);
 
         if($records){
             $categories = Category::all();
             $images = Image::all();
-            return view('dashboard.editPost', compact('records','categories','images'))->with('title', 'Edit Post');
+            return view('admin.editPost', compact('records','categories','images'));
         }else{
-            echo '<script>alert("Invalid request!");</script>';
-            return back();
+            return back()->with('error', 'The server cannot handle your request at the moment. Please try again later.');
         }
 
     }

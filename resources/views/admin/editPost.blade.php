@@ -4,25 +4,22 @@
 
 @section('content')
     <?php
-    foreach($records as $rec){
-        $title = $rec->post_title;
-        $thumbnail = $rec->post_thumbnail;
-        $excerpt = $rec->post_excerpt;
-        $status = $rec->post_status;
-        $id = $rec->id;
+    $title = $records->title;
+    $thumbnail = $records->thumbnail;
+    $excerpt = $records->excerpt;
+    $status = $records->status;
+    $id = $records->id;
 
-        if($status == '1'){
-            $state = "Publish Now";
-        }else{
-            $state = "Save as Draft";
-        }
-
-        $author = $rec->post_author;
-        $category = $rec->post_category;
-        $tags = $rec->post_tags;
-        $body = $rec->post_content;
+    if($status == '1'){
+        $state = "Publish Now";
+    }else{
+        $state = "Save as Draft";
     }
 
+    $author = $records->author;
+    $category = $records->category;
+    $tags = $records->tags;
+    $body = $records->content;
     ?>
     <!-- Start Breadcrumbbar -->
     <div class="breadcrumbbar">
@@ -70,7 +67,7 @@
                                         <div class="form-group">
                                             <label>Category:</label>
                                             <select name="post_category" required="required" class="form-control">
-                                                <option value="{{$category}}">{{$category}}</option>
+                                                <option value="{{$records->category->id}}">{{$records->category->title}}</option>
                                                 @if($categories)
                                                     @foreach($categories as $cat)
                                                         <option value="{{$cat->title}}">{{$cat->title}}</option>

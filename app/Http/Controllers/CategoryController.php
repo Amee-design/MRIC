@@ -12,8 +12,7 @@ class CategoryController extends Controller
     public function categories()
     {
         $categories = Category::latest()->get();
-        $images = Image::all();
-        return view('admin.categories', compact('categories', 'images'));
+        return view('admin.categories', compact('categories'));
     }
 
     public function addCategory(Request $request)
@@ -28,7 +27,6 @@ class CategoryController extends Controller
         $category = new Category();
         $category->title = $validatedData['title'];
         $category->slug = $slug;
-        $category->thumbnail = $request->thumbnail;
         $category->description = $validatedData['description'];
 
         if ($category->save()) {
@@ -49,7 +47,6 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->title = $title;
         $category->slug = $slug;
-        $category->thumbnail = $request->thumbnail;
         $category->description = $description;
 
         if($category->save()){

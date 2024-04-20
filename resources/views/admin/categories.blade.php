@@ -96,17 +96,6 @@
                     <form method="post" action="{{route('admin.addCategory')}}">
                         @csrf
                         <div class="form-group mb-2">
-                            <label>Thumbnail</label>
-                            <select name="thumbnail" class="form-control" required="required">
-                                <option></option>
-                                @if($images)
-                                    @foreach($images as $rec)
-                                        <option value="{{$rec->link}}">{{$rec->title}}</option>
-                                    @endforeach
-                                @endif
-                            </select>
-                        </div>
-                        <div class="form-group mb-2">
                             <label>Title</label>
                             <input type="text" name="title" class="form-control" required="required">
                         </div>
@@ -136,17 +125,6 @@
                     <form method="post" id="edit-category-form" action="{{route('admin.updateCategory')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group mb-2">
-                            <label>Thumbnail</label>
-                            <select name="thumbnail" id="category-thumbnail" class="form-control" required="required">
-                                <option></option>
-                                @if($images)
-                                    @foreach($images as $rec)
-                                        <option value="{{$rec->link}}">{{$rec->title}}</option>
-                                    @endforeach
-                                @endif
-                            </select>
-                        </div>
-                        <div class="form-group mb-2">
                             <label>Title</label>
                             <input type="text" name="title" id="category-title" class="form-control" required="required">
                         </div>
@@ -172,7 +150,6 @@
                     $("#category-title").val(response.data.title);
                     $("#category-description").val(response.data.description);
                     $("#category-id").val(response.data.id);
-                    document.getElementById("category-thumbnail").innerHTML += '<option value="'+response.data.thumbnail+'" selected>'+response.data.thumbnail+'</option>';
                 }else{
                     Swal.fire("error", "Something went wrong. User was not blocked.");
                 }
