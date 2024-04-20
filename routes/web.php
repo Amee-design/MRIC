@@ -5,6 +5,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +47,21 @@ Route::group(['middleware' => 'auth'], function () {
     });
     Route::controller(AdminController::class)->group(function () {
         Route::get('/admin/members/{type}', 'members')->name('admin.users');
+    });
+    Route::controller(CategoryController::class)->group(function () {
+        Route::post('/admin/addCategory', 'addCategory')->name('admin.addCategory');
+        Route::get('/admin/categories', 'categories')->name('admin.categories');
+        Route::get('/admin/delete-category/{id}', 'destroy')->name('admin.deleteCategory');
+        Route::get('/admin/get-category/{id}', 'getCategory');
+        Route::post('/admin/update-category', 'update')->name('admin.updateCategory');
+    });
+    Route::controller(PostController::class)->group(function () {
+        Route::get('/admin/posts', 'index')->name('admin.posts');
+        Route::post('/admin/savePost', 'store')->name('admin.savePost');
+    });
+    Route::controller(SettingController::class)->group(function () {
+        Route::get('/admin/settings', 'index')->name('admin.settings');
+        Route::post('/admin/save-settings', 'store')->name('admin.saveSettings');
     });
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

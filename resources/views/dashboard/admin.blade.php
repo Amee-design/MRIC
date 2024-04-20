@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Admin | DarlCreativeHub')
+@section('title', 'Admin | MRIC')
 
 @section('content')
 

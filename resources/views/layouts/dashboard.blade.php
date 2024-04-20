@@ -30,6 +30,8 @@
     <link href="{{ asset('main/css/icons.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('main/css/flag-icon.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('main/css/style.css') }}" rel="stylesheet" type="text/css">
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <!-- End css -->
 </head>
 
@@ -77,8 +79,8 @@
                             <i class="ri-arrow-right-s-line"></i>
                             </a>
                             <ul class="vertical-submenu">
-                                <li><a href="#">Event Categories</a></li>
-                                <li><a href="#">Post Event</a></li>
+                                <li><a href="{{route('admin.categories')}}">Event Categories</a></li>
+                                <li><a href="{{route('admin.posts')}}">Post Event</a></li>
                                 <li><a href="#">All Events</a></li>
                             </ul>
                         </li>
@@ -105,19 +107,14 @@
                         </li>
 
                         <li>
-                            <a href="javascript:void(0)">
-                                <i class="ri-book-2-fill"></i><span>Courses</span>
-                                <i class="ri-arrow-right-s-line"></i>
+                            <a href="#">
+                                <i class="ri-file-text-line"></i><span>My Donations</span>
                             </a>
-                            <ul class="vertical-submenu">
-                                <li><a href="#">Add Courses</a></li>
-                                <li><a href="#">Manage Courses</a></li>
-                            </ul>
                         </li>
 
                         <li>
                             <a href="#">
-                                <i class="ri-file-text-line"></i><span>Lessons</span>
+                                <i class="ri-file-text-line"></i><span>Events</span>
                             </a>
                         </li>
                         @endif
@@ -271,7 +268,7 @@
     <script src="{{asset('main/js/detect.js')}}"></script>
     <script src="{{asset('main/js/jquery.slimscroll.js')}}"></script>
     <script src="{{asset('main/js/vertical-menu.js')}}"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <!-- Datatable js -->
     <script src="{{asset('main/plugins/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('main/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
@@ -303,6 +300,7 @@
     <!-- Core js -->
     <script src="{{asset('main/js/core.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
+    @stack('scripts')
     <!-- End js -->
 </body>
 

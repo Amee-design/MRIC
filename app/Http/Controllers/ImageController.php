@@ -2,60 +2,131 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Image;
+use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {
-    public function saveImages(Request $request)
+    public function cleanStr($str){
+
+        $link = trim($str);
+
+        $link = strtolower(str_replace(" ", "-", $link));
+
+        $link = str_replace("?", "", $link);
+
+        $link = str_replace(".", "", $link);
+
+        $link = str_replace("(", "", $link);
+        $link = str_replace(")", "", $link);
+        $link = str_replace("<", "", $link);
+        $link = str_replace(">", "", $link);
+        $link = str_replace("&", "", $link);
+        $link = str_replace("'", "", $link);
+        $link = str_replace(",", "", $link);
+        $link = str_replace("/", "-", $link);
+        $link = str_replace("%", "", $link);
+        $link = str_replace("'s", "s", $link);
+        $link = str_replace(":", "", $link);
+        $link = str_replace(";", "", $link);
+
+        return $link;
+
+    }
+
+    public function index()
     {
-        $image = $_FILES['pic']['name'];
+        $images = Image::paginate(12);
+        return view('admin.images', compact('images'))->with('title', 'Upload Images');
+    }
 
-        $size = $_FILES['pic']['size'];
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
 
-        $extension = strtolower(pathinfo($image,PATHINFO_EXTENSION));
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        try{
+            $validatedData = $request->validate([
+                'pic' => 'required|image|max:2048',
+                'title' => 'required|string',
+                'description' => 'nullable|string',
+            ]);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            $errors = $e->validator->getMessageBag();
+            $errorMessages = '';
 
-        $images = new Image();
-        $images->title = $request->title;
-        $images->description = $request->description;
-        $images->link = $this->cleanStr($request->title).".".$extension;
-
-        if(file_exists('{{url("/")}}/storage/app/public/images/'.$images->link)){
-            echo '<script>alert("Image already exists!");history.back();</script>';
-            exit();
-        }
-
-        if(DB::select("SELECT id FROM images WHERE link = '$images->link'")){
-            echo '<script>alert("Image already exists!");history.back();</script>';
-            exit();
-        }
-
-        if(($extension == 'jpg' || $extension == 'jpeg' || $extension == 'png' || $extension == 'gif')  && $size < 2000000 ){
-
-            if($request->file('pic')->storeAs('public/images', $images->link)){
-                if($images->save()){
-                    //success
-                    echo '<script>history.back();</script>';
-                }else{
-                    echo '<script>alert("Image was not uploaded!");history.back();</script>';
-                }
+            foreach ($errors->all() as $error) {
+                $errorMessages .= $error . '.';
             }
 
-        }else{
-            echo '<script>alert("Ooooops! Sorry, the size of file you attempted to upload is either more than 2mb or the file extension is not supported.");history.back();</script>';
+            return back()->with('error', 'Validation failed:<br>' . $errorMessages);
+        }
+
+        $image = $request->file('pic');
+        $extension = $image->extension();
+        $imageName = $this->cleanStr($validatedData['title']) . '.' . $extension;
+
+        // Check if the image already exists
+        if (Storage::exists('public/images/' . $imageName) || Image::where('link', $imageName)->exists()) {
+            return redirect()->back()->with('error', 'Image already exists!');
+        }
+
+        // Store the image and save the record
+        if ($image->storeAs('public/images', $imageName)) {
+            $newImage = new Image();
+            $newImage->title = $validatedData['title'];
+            $newImage->description = $validatedData['description'];
+            $newImage->link = $imageName;
+
+            if ($newImage->save()) {
+                return redirect()->back()->with('success', 'Image uploaded successfully!');
+            } else {
+                Storage::delete('public/images/' . $imageName); // Delete the uploaded image if saving failed
+                return redirect()->back()->with('error', 'Failed to save image.');
+            }
+        } else {
+            return redirect()->back()->with('error', 'Failed to upload image.');
         }
     }
-    public function uploadImages(Request $request)
-    {
-        $images = Image::all();
-        return view('dashboard.uploadImages', compact('images'))->with('title', 'Upload Images');
-    }
-    public function videos()
-    {
-        return view('dashboard.videos')->with('title', 'Add Videos');
-    }
-    public function deleteImage(Request $request){
 
+    /**
+     * Display the specified resource.
+     */
+    public function show(Image $image)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Image $image)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Image $image)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Image $image)
+    {
         $file = $request->file;
 
         $loc = Image::where('link',$file)->first();
