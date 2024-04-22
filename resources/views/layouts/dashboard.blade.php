@@ -81,7 +81,6 @@
                             <ul class="vertical-submenu">
                                 <li><a href="{{route('admin.categories')}}">Event Categories</a></li>
                                 <li><a href="{{route('admin.posts')}}">Post Event</a></li>
-                                <li><a href="#">All Events</a></li>
                             </ul>
                         </li>
 
