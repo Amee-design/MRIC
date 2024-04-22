@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
+            $table->string('title')->default('MRIC');
             $table->text('description');
-            $table->string('keywords')->nullable();
-            $table->string('email',60)->nullable();
+            $table->string('keywords')->default('MRIC');
+            $table->string('email',30)->nullable();
             $table->string('phone',14)->nullable();
+            $table->string('fb')->nullable();
+            $table->string('x')->nullable();
+            $table->string('ig')->nullable();
+            $table->string('li')->nullable();
             $table->string('address')->nullable();
             $table->string('bank_name')->nullable();
             $table->string('account_name')->nullable();

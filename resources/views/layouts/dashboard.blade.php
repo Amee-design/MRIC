@@ -85,6 +85,13 @@
                         </li>
 
                         <li>
+                            <a href="{{route('admin.settings')}}">
+                                <i class="ri-setting-4-fill"></i>
+                                <span>Site Info</span>
+                            </a>
+                        </li>
+
+                        <li>
                             <a href="#">
                                 <i class="ri-shopping-bag-fill"></i><span>Donations</span>
                             </a>
