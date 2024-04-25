@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Image;
 use App\Models\Post;
 use App\Models\Setting;
+use App\Models\Media;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -42,7 +43,7 @@ class HomeController extends Controller
         $slider_images = Slider::all();
         $gallery = Gallery::all();
         $pages = $this->pages();
-        $about = Page::where('title','About Us')->get();
+        $about = Page::where('title','About Us')->first();
         $events = Post::latest()->limit(3)->get();
         $details = Setting::first();
         return view('welcome', compact('slider_images','gallery','about', 'events','details','pages'));
@@ -61,24 +62,37 @@ class HomeController extends Controller
             abort(404);
         }
         $pages = $this->pages();
-        return view('page', compact('page', 'pages', 'latest'));
+        $details = Setting::first();
+        return view('page', compact('page', 'pages', 'latest', 'details'));
     }
 
     public function contact(){
         $this->updateSiteViews();
         $pages = $this->pages();
-        return view('contact', 'pages');
+        $details = Setting::first();
+        return view('contact', compact('pages', 'details'));
+    }
+
+    public function media(){
+        $this->updateSiteViews();
+        $pages = $this->pages();
+        $details = Setting::first();
+        $media = Media::paginate(12);
+        return view('media', compact('pages', 'details', 'media'));
     }
 
     public function donation(){
         $this->updateSiteViews();
         $pages = $this->pages();
         $latest = Post::latest()->limit(12)->get();
-        return view('donation', compact('pages', 'latest'));
+        $details = Setting::first();
+        return view('donation', compact('pages', 'latest', 'details'));
     }
 
     public function onHold()
     {
-        return view('onhold')->with('title', 'Account On-hold | MRIC');
+        $pages = $this->pages();
+        $details = Setting::first();
+        return view('onhold', compact('details', 'pages'));
     }
 }

@@ -74,6 +74,13 @@
                         </li>
 
                         <li>
+                            <a href="{{route('admin.images')}}">
+                                <i class="ri-image-4-fill"></i>
+                                <span>Manage Images</span>
+                            </a>
+                        </li>
+
+                        <li>
                             <a href="javascript:void(0)">
                                 <i class="ri-file-list-line"></i><span>Events</span>
                             <i class="ri-arrow-right-s-line"></i>
@@ -92,8 +99,14 @@
                         </li>
 
                         <li>
+                            <a href="{{route('admin.sliders')}}">
+                                <i class="ri-image-text-line"></i><span>Sliders</span>
+                            </a>
+                        </li>
+
+                        <li>
                             <a href="{{route('admin.settings')}}">
-                                <i class="ri-setting-4-fill"></i>
+                                <i class="ri-pencil-4-fill"></i>
                                 <span>Site Info</span>
                             </a>
                         </li>
@@ -130,6 +143,7 @@
                                 <i class="ri-file-text-line"></i><span>Events</span>
                             </a>
                         </li>
+
                         @endif
                     </ul>
                 </div>

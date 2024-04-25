@@ -13,20 +13,20 @@
                         <li data-target="#carouselExampleCaptions" data-slide-to="1" class=""></li>
                     </ol>
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="{{asset('landing/images/mric_logo.PNG')}}" class="d-block w-100" alt="First slide">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>First slide label</h5>
-                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="assets/images/ui-carousel/ui-carousel-11.jpg" class="d-block w-100" alt="Second slide">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Second slide label</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                        </div>
+                        @if($slider_images)
+                            @foreach($slider_images as $key => $slider)
+                                @if(($key+1) == 1)
+                                <div class="carousel-item active">
+                                    <img src="{{ asset('storage/images/'.$slider->img) }}" class="d-block w-100" alt="First slide">
+                                </div>
+                                @else
+                                <div class="carousel-item">
+                                    <img src="{{ asset('storage/images/'.$slider->img) }}" class="d-block w-100" alt="Second slide">
+                                </div>
+                                @endif
+                            @endforeach
+                        @endif
+
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -79,13 +79,15 @@
                 <div class="card m-b-30 borderless">
                   <div class="row no-gutters">
                     <div class="col-md-6">
-                      <img src="{{asset('landing/images/mric_logo.PNG')}}" class="card-img h-100" alt="Card image">
+                      <img src="/storage/images/{{$about ? $about->thumbnail : '#'}}" class="card-img h-100" alt="{{$about ? $about->title : 'No image yet'}}">
                     </div>
                     <div class="col-md-6">
                       <div class="card-body">
                         <h5 class="card-title font-18">About Us</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                        <a href="#" class="btn btn-primary mt-2">Read More</a>
+                        <p class="card-text">
+                            {{$about ? $about->excerpt : 'No content yet'}}
+                        </p>
+                        <a href="{{route('home.page', ['slug' => 'about-us'])}}" class="btn btn-primary mt-2">Read More</a>
                       </div>
                     </div>
                   </div>

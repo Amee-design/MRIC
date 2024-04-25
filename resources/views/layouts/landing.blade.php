@@ -55,7 +55,7 @@
 										</li>
 
 										<li id="nav-menu-item-57" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page current_page_parent">
-											<a href="#about" class="menu-link main-menu-link" data-wpel-link="internal">About Us</a>
+											<a href="{{route('home.page', ['slug' => 'about-us'])}}" class="menu-link main-menu-link" data-wpel-link="internal">About Us</a>
                                         </li>
 
 										<li id="nav-menu-item-58" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
@@ -64,6 +64,10 @@
 
                                         <li id="nav-menu-item-58" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
                                             <a href="{{route('home.donation')}}" class="menu-link main-menu-link" data-wpel-link="internal">Donations</a>
+                                        </li>
+
+                                        <li id="nav-menu-item-58" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
+                                            <a href="{{route('home.media')}}" class="menu-link main-menu-link" data-wpel-link="internal">Our Media</a>
                                         </li>
 
                                         <li id="nav-menu-item-58" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">

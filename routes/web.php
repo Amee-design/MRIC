@@ -9,6 +9,9 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\SliderController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\MediaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +28,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('home.index');
     Route::get('/p/{slug}', 'page')->name('home.page');
     Route::get('/donations', 'donation')->name('home.donation');
+    Route::get('/media', 'media')->name('home.media');
     Route::get('/onhold', 'onHold');
 });
 
@@ -77,6 +81,22 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/admin/save-page', 'store')->name('admin.savePage');
         Route::get('/admin/editPage/{page_id}', 'edit')->name('admin.editPage');
         Route::post('/admin/update-page', 'update')->name('admin.updatePage');
+    });
+
+    Route::controller(ImageController::class)->group(function () {
+        Route::get('/admin/images', 'index')->name('admin.images');
+        Route::get('/admin/delete-image/{file}', 'destroy');
+        Route::post('/admin/uploadImage', 'store')->name('admin.uploadImage');
+    });
+
+    Route::controller(SliderController::class)->group(function () {
+        Route::get('/admin/sliders', 'index')->name('admin.sliders');
+        Route::post('/admin/save-slider', 'store')->name('admin.saveSlider');
+        Route::post('/admin/delete-slider', 'destroy')->name('admin.deleteSlider');
+    });
+
+    Route::controller(MediaController::class)->group(function () {
+
     });
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

@@ -125,7 +125,7 @@ class ImageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Image $image)
+    public function destroy(Request $request)
     {
         $file = $request->file;
 
@@ -133,9 +133,13 @@ class ImageController extends Controller
         $deleted = $loc->delete();
         if($deleted){
             unlink('../storage/app/public/images/'.$file);
-            return back();
+            $response['status'] = "success";
+            $response['message'] = "Image deleted successfully!";
+            echo json_encode($response);
         }else{
-            echo '<script>alert("The server was unable to handle your request...");history.back();</script>';
+            $response['status'] = "failed";
+            $response['message'] = "Image was not deleted!";
+            echo json_encode($response);
         }
     }
 }
