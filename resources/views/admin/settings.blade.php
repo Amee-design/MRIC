@@ -92,6 +92,24 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
+                                <label>Vision Statement</label>
+                                <input type="text" name="vision" value="{{$data->vision ?? null}}" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Mission Statement</label>
+                                <input type="text" name="mission" value="{{$data->mission ?? null}}" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Core Values</label>
+                                <input type="text" name="values" value="{{$data->core_values ?? null}}" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
                                 <label>Facebook</label>
                                 <input type="text" name="fb" value="{{$data->fb ?? null}}" class="form-control">
                             </div>

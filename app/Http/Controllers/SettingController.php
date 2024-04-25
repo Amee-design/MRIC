@@ -51,6 +51,9 @@ class SettingController extends Controller
         $setting->x = $request->x;
         $setting->ig = $request->ig;
         $setting->fb = $request->fb;
+        $setting->vision = $request->vision;
+        $setting->mission = $request->mission;
+        $setting->core_values = $request->values;
 
         if($setting->save())
         {

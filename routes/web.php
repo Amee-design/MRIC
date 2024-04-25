@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,14 @@ use App\Http\Controllers\SettingController;
 
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('home.index');
+    Route::get('/p/{slug}', 'page')->name('home.page');
+    Route::get('/donations', 'donation')->name('home.donation');
     Route::get('/onhold', 'onHold');
+});
+
+Route::controller(PostController::class)->group(function () {
+    Route::get('/b/{slug}', 'viewPost')->name('home.viewBlogPost');
+    Route::get('/events', 'blog')->name('home.events');
 });
 
 Route::group(['middleware' => 'guest'], function () {
@@ -36,7 +44,6 @@ Route::group(['middleware' => 'guest'], function () {
         Route::post('/forgot-password', 'forgotPassword');
         Route::post('/secure-otp', 'validateOtp');
         Route::post('/verify-account/{email}/{password}', 'handleVerification');
-
         Route::post('/new-password', 'newPassword')->name('newPassword');
     });
 });
@@ -64,6 +71,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::controller(SettingController::class)->group(function () {
         Route::get('/admin/settings', 'index')->name('admin.settings');
         Route::post('/admin/save-settings', 'store')->name('admin.saveSettings');
+    });
+    Route::controller(PageController::class)->group(function () {
+        Route::get('/admin/pages', 'index')->name('admin.pages');
+        Route::post('/admin/save-page', 'store')->name('admin.savePage');
+        Route::get('/admin/editPage/{page_id}', 'edit')->name('admin.editPage');
+        Route::post('/admin/update-page', 'update')->name('admin.updatePage');
     });
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

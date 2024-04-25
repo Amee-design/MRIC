@@ -8,10 +8,18 @@ use App\Models\Page;
 use App\Models\Slider;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Image;
+use App\Models\Post;
+use App\Models\Setting;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+    private function pages()
+    {
+        $pages = Page::where('title', '!=', 'About Us')->get();
+        return $pages;
+    }
+
     public function updateSiteViews(){
         $sql = "SELECT count FROM views";
         $gc = DB::select($sql);
@@ -33,24 +41,40 @@ class HomeController extends Controller
         $this->updateSiteViews();
         $slider_images = Slider::all();
         $gallery = Gallery::all();
+        $pages = $this->pages();
         $about = Page::where('title','About Us')->get();
-        return view('welcome', compact('slider_images','gallery','about'))->with('title', 'Welcome | MRIC');
+        $events = Post::latest()->limit(3)->get();
+        $details = Setting::first();
+        return view('welcome', compact('slider_images','gallery','about', 'events','details','pages'));
     }
 
-
-    public function about()
+    public function page(Request $request)
     {
         $this->updateSiteViews();
 
-        $about = Page::where('title','About Us')->get();
-        $members = User::where('verified', '1')->get();
-        $images = Image::all();
-        return view('about', compact('about','members','images'))->with('title', 'About Us | MRIC');
+        $link = $request->slug;
+
+        $latest = Post::latest()->limit(12)->get();
+
+        $page = Page::where('link', $link)->first();
+        if (!$page) {
+            abort(404);
+        }
+        $pages = $this->pages();
+        return view('page', compact('page', 'pages', 'latest'));
     }
 
     public function contact(){
         $this->updateSiteViews();
-        return view('contact')->with('title', 'Contact Us | MRIC');
+        $pages = $this->pages();
+        return view('contact', 'pages');
+    }
+
+    public function donation(){
+        $this->updateSiteViews();
+        $pages = $this->pages();
+        $latest = Post::latest()->limit(12)->get();
+        return view('donation', compact('pages', 'latest'));
     }
 
     public function onHold()

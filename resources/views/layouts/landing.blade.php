@@ -51,7 +51,7 @@
 
 										<li id="nav-menu-item-64"
 											class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-taxonomy menu-item-object-download_category">
-											<a href="#" class="menu-link main-menu-link" data-wpel-link="internal">Home</a>
+											<a href="{{route('home.index')}}" class="menu-link main-menu-link" data-wpel-link="internal">Home</a>
 										</li>
 
 										<li id="nav-menu-item-57" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page current_page_parent">
@@ -59,11 +59,11 @@
                                         </li>
 
 										<li id="nav-menu-item-58" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
-											<a href="#events" class="menu-link main-menu-link" data-wpel-link="internal">Events</a>
+											<a href="{{route('home.events')}}" class="menu-link main-menu-link" data-wpel-link="internal">Events</a>
                                         </li>
 
                                         <li id="nav-menu-item-58" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
-                                            <a href="#" class="menu-link main-menu-link" data-wpel-link="internal">Donations</a>
+                                            <a href="{{route('home.donation')}}" class="menu-link main-menu-link" data-wpel-link="internal">Donations</a>
                                         </li>
 
                                         <li id="nav-menu-item-58" class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
@@ -121,7 +121,7 @@
 								</div>
 							</div>
 							<div id="media_image-2" class="widget widget_media_image list-unstyled">
-								<h5 class="widgettitle">Pay Securely</h5><img width="255" height="22"
+								<h5 class="widgettitle">Donate Securely</h5><img width="255" height="22"
 									src="https://themesbox.in/wp-content/uploads/2019/12/payments.png"
 									class="image wp-image-66  attachment-full size-full" alt="payments" loading="lazy"
 									style="max-width: 100%; height: auto;" />
@@ -132,11 +132,15 @@
 								<h5 class="widgettitle">Quick Links</h5>
 								<div class="textwidget">
 									<ul class="list-unstyled mb-0">
-										<li><a href="#" data-wpel-link="internal">About Us</a></li>
-										<li><a href="#" data-wpel-link="internal">Events</a></li>
-                                        <li><a href="#" data-wpel-link="internal">Donations</a></li>
-										<li><a href="#" data-wpel-link="internal">Privacy Policy</a></li>
-										<li><a href="#" data-wpel-link="internal">Terms &amp; Conditions</a></li>
+                                        <li><a href="{{route('home.index')}}" data-wpel-link="internal">Home</a></li>
+										<li><a href="{{route('home.page', ['slug' => 'about-us'])}}" data-wpel-link="internal">About Us</a></li>
+										<li><a href="{{route('home.events')}}" data-wpel-link="internal">Events</a></li>
+                                        <li><a href="{{route('home.donation')}}" data-wpel-link="internal">Donations</a></li>
+                                        @if($pages)
+                                            @foreach($pages as $page)
+                                            <li><a href="{{route('home.page', ['slug' => $page->link])}}" data-wpel-link="internal">{{$page->title}}</a></li>
+                                            @endforeach
+                                        @endif
 									</ul>
 								</div>
 							</div>

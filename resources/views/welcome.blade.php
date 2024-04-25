@@ -50,7 +50,7 @@
                 <i class="fa fa-eye" style="font-size: 48px;line-height:48px"></i>
                 </span>
                 <h4>Our Vision</h4>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima illo, accusamus quas, natus molestias aspernatur in magni qui modi beatae tempore dolorum sapiente consequuntur quos commodi tempora pariatur? Expedita, dolor?</p>
+                <p>{{$details ? $details->vision : null}}</p>
             </div>
 
             <div class="col-md-4 text-center">
@@ -58,7 +58,7 @@
                 <i class="fa fa-hourglass-2 p-3" style="font-size: 48px;line-height:48px"></i>
                 </span>
                 <h4>Our Mission</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In nesciunt iure optio facere temporibus eligendi provident tempora, commodi, tenetur eos voluptatem blanditiis id laborum placeat nulla, atque fugit porro recusandae?.</p>
+                <p>{{$details ? $details->mission : null}}</p>
             </div>
 
             <div class="col-md-4 text-center">
@@ -66,7 +66,7 @@
                 <i class="fa fa-gears p-3" style="font-size: 48px;line-height:48px"></i>
                 <span class="w-100 p-3">
                 <h4>Our Core Values</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero totam tempora fuga omnis, quam modi eius dolores eveniet laboriosam ratione aspernatur molestiae aliquam amet pariatur error eligendi. Explicabo, quia quae.</p>
+                <p>{{$details ? $details->core_values : null}}</p>
             </span></span></div>
         </div>
     </div>
@@ -105,36 +105,24 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card-deck m-b-30">
-                  <div class="card">
-                    <img class="card-img-top" src="{{asset('landing/images/mric_logo.PNG')}}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title font-18">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <img class="card-img-top" src="{{asset('landing/images/mric_logo.PNG')}}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title font-18">Card title</h5>
-                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <img class="card-img-top" src="{{asset('landing/images/mric_logo.PNG')}}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title font-18">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                  </div>
+                    @if($events)
+                        @foreach($events as $event)
+                        <div class="card">
+                            <img class="card-img-top" src="/storage/images/{{$event->thumbnail}}" alt="{{$event->title}}">
+                            <div class="card-body">
+                                <h5 class="card-title font-18">{{$event->title}}</h5>
+                                <p class="card-text">{{$event->description}}</p>
+                                <p class="card-text"><small class="text-muted">{{$event->created_at}}</small></p>
+                            </div>
+                        </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-md-4 m-auto text-center">
-                <a href="#" class="btn btn-primary">View ALl Events</a>
+                <a href="{{route('home.events')}}" class="btn btn-primary">View ALl Events</a>
             </div>
         </div>
     </div>

@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Image;
+use App\Models\Page;
 
 class PostController extends Controller
 {
@@ -156,7 +157,6 @@ class PostController extends Controller
         }else{
             return back()->with('error', 'The server cannot handle your request at the moment. Please try again later.');
         }
-
     }
 
     public function deletePost(Request $request)
@@ -202,12 +202,15 @@ class PostController extends Controller
         return view('admin.draft', compact('blog'))->with('title', 'Drafts');
     }
 
+    private function pages()
+    {
+        $pages = Page::where('title', '!=', 'About Us')->get();
+        return $pages;
+    }
+
     public function viewPost(Request $request)
     {
         $link = $request->slug;
-
-        // Fetch categories
-        $categories = Category::all();
 
         // Check if the post exists
         $post = Post::where('link', $link)->first();
@@ -216,6 +219,7 @@ class PostController extends Controller
             abort(404);
         }
 
+        $pages = $this->pages();
         // Increment views count
         $post->increment('views');
 
@@ -227,12 +231,11 @@ class PostController extends Controller
 
         return view('view-post', [
             'post' => $post,
-            'categories' => $categories,
-            'coursesCount' => $coursesCount,
             'posts' => $posts,
             'latest' => $latest,
             'previousPost' => $previousPost,
-            'nextPost' => $nextPost
+            'nextPost' => $nextPost,
+            'pages' => $pages
         ]);
     }
 
@@ -243,9 +246,6 @@ class PostController extends Controller
         // Fetch latest posts
         $latest = Post::orderBy('id', 'desc')->limit(12)->get();
 
-        // Fetch popular posts by views
-        $popular = Post::orderBy('views', 'desc')->limit(12)->get();
-
         $link = $request->link;
         $category = Category::where('link', $link)->first();
 
@@ -253,9 +253,11 @@ class PostController extends Controller
             abort(404);
         }
 
-        $posts = $category->posts()->latest()->paginate(12);
+        $events = $category->posts()->latest()->paginate(12);
 
-        return view('category', compact('category', 'posts', 'categories', 'latest', 'popular'));
+        $pages = $this->pages();
+
+        return view('category', compact('category', 'events', 'categories', 'latest', 'pages'));
     }
 
     public function blog(Request $request)
@@ -264,11 +266,10 @@ class PostController extends Controller
         // Fetch latest posts
         $latest = Post::orderBy('id', 'desc')->limit(12)->get();
 
-        // Fetch popular posts by views
-        $popular = Post::orderBy('views', 'desc')->limit(12)->get();
+        $events = Post::latest()->paginate(12);
 
-        $posts = Post::latest()->paginate(12);
+        $pages = $this->pages();
 
-        return view('blog', compact('categories', 'posts', 'categories', 'latest', 'popular', 'coursesCount'));
+        return view('events', compact('categories', 'events', 'categories', 'latest', 'pages'));
     }
 }

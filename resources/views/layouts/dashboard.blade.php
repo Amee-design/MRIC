@@ -85,6 +85,13 @@
                         </li>
 
                         <li>
+                            <a href="{{route('admin.pages')}}">
+                                <i class="ri-file-4-fill"></i>
+                                <span>Manage Pages</span>
+                            </a>
+                        </li>
+
+                        <li>
                             <a href="{{route('admin.settings')}}">
                                 <i class="ri-setting-4-fill"></i>
                                 <span>Site Info</span>

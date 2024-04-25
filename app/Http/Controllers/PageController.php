@@ -3,20 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Models\Page;
 use App\Models\Image;
 
 class PageController extends Controller
 {
-    public function newPage()
+    public function index()
     {
-        return view('dashboard.newPage')->with('title', 'Make New Page');
+        $pages = Page::paginate(30);
+        $images = Image::all();
+        return view('admin.pages', compact('pages', 'images'));
     }
-    public function savePage(Request $request){
+    public function store(Request $request){
         $page = new Page();
-        $page->thumbnail = $request->thumbnail;
+        $page->thumbnail = null;
         $page->title = $request->title;
-        $page->link = $this->cleanStr($request->title);
+        $page->link = Str::slug($request->title);
         $page->description = $request->description;
         $page->content = $request->content;
         $page->keywords = $request->keywords;
@@ -28,21 +31,21 @@ class PageController extends Controller
             echo '<script>alert("The server is unable to handle your request at the moment!");</script>';
         }
     }
-    public function editPage(Request $request)
+    public function edit(Request $request)
     {
-        if($request->id){
-            $pid = $request->id;
-            $page = Page::where('id','=', $pid)->get();
+        if($request->page_id){
+            $pid = $request->page_id;
+            $page = Page::find($pid);
             $images = Image::all();
-            return view('dashboard.editPage', compact('page','images'))->with('title', 'Edit Page');
+            return view('admin.editPage', compact('page','images'));
         }else{
             return back();
         }
     }
-    public function updatePage(Request $request){
+    public function update(Request $request){
 
         $page = Page::find($request->pid);
-        $page->thumbnail = $request->thumbnail;
+        $page->thumbnail = null;
         $page->description = $request->description;
         $page->content = $request->myTextArea;
         $page->keywords = $request->keywords;
@@ -57,6 +60,6 @@ class PageController extends Controller
     public function pages()
     {
         $pages = Page::all();
-        return view('dashboard.pages', compact('pages'))->with('title', 'Site Pages');
+        return view('admin.pages', compact('pages'))->with('title', 'Site Pages');
     }
 }
