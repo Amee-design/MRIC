@@ -65,7 +65,7 @@
                                                 @endif
                                             </td>
                                             <td>{{$user->created_at}}</td>
-                                            <td><a href="#"><btn class="btn btn-info"><i class="fa fa-eye"></i></btn></a></td>
+                                            <td><a href="javascript:void(0)"><btn class="btn btn-info" onclick="viewProfile({{$user->id}})"><i class="fa fa-eye"></i></btn></a></td>
                                         </tr>
                                         @endforeach
                                     @endif
@@ -91,4 +91,36 @@
     </div>
     <!-- End Contentbar -->
 
+    <div class="modal fade profile-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">User Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row" id="profile-screen"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
+@push('scripts')
+    <script>
+        function viewProfile(id)
+        {
+            $("#profile-modal").modal('show');
+            var url = '/admin/get-profile/' + id;
+            $.get(url, function(response, status){
+                $("#profile-screen").html(response);
+            });
+        }
+    </script>
+@endpush
+
+

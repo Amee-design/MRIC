@@ -7,11 +7,11 @@ use App\Models\User;
 
 class AdminController extends Controller
 {
-    public function profile()
-    {
-        $profile = Auth::user();
-        return view('admin.profile', compact('profile'))->with('title', 'Admin Profile');
-    }
+    // public function profile()
+    // {
+    //     $profile = Auth::user();
+    //     return view('admin.profile', compact('profile'))->with('title', 'Admin Profile');
+    // }
 
     public function updateProfile(Request $request)
     {
@@ -73,10 +73,38 @@ class AdminController extends Controller
         return back()->with('success', 'Member was approved successfully!');
     }
 
-    public function memberProfile(Request $request)
+    public function profile(Request $request)
     {
-        $member = User::findOrFail($request->mid);
-        return view('admin.member_profile', compact('member'));
+        $member = User::findOrFail($request->id);
+        $output = "";
+        if($member)
+        {
+            $output .= '<div class="card">
+                <div class="card-header">
+                    <h5 class="text-center">'.$member->fname.' '.$member->lname.'\'s Profile</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-sm borderless">
+                        <tr>
+                            <th>Email:</th>
+                            <td>'.$member->email.'</td>
+                        </tr>
+                        <tr>
+                            <th>Phone:</th>
+                            <td>'.$member->phone.'</td>
+                        </tr>
+                        <tr>
+                            <th>Country:</th>
+                            <td>'.$member->country.'</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>';
+
+            echo $output;
+        }else{
+            echo '<p>Invalid profile</p>';
+        }
     }
 
     public function makeAdmin(Request $request)

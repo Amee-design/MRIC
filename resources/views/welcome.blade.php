@@ -110,9 +110,9 @@
                     @if($events)
                         @foreach($events as $event)
                         <div class="card">
-                            <img class="card-img-top" src="/storage/images/{{$event->thumbnail}}" alt="{{$event->title}}">
+                            <a href="{{url('/')}}/b/{{$event->link}}"><img class="card-img-top" src="/storage/images/{{$event->thumbnail}}" alt="{{$event->title}}"></a>
                             <div class="card-body">
-                                <h5 class="card-title font-18">{{$event->title}}</h5>
+                                <a href="{{url('/')}}/b/{{$event->link}}"><h5 class="card-title font-18">{{$event->title}}</h5></a>
                                 <p class="card-text">{{$event->description}}</p>
                                 <p class="card-text"><small class="text-muted">{{$event->created_at}}</small></p>
                             </div>

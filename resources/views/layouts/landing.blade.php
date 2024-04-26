@@ -35,7 +35,8 @@
                 <div class="container">
 					<div class="logobar">
                         <a href="{{route('home.index')}}" data-wpel-link="internal">
-                            <img src="{{asset('main/images/logo.png')}}" style="width: 100px!important" class="img-fluid" alt="logo">
+
+                            <img src="/storage/images/{{$details ? $details->logo : null}}" style="width: 100px!important" class="img-fluid" alt="logo">
                         </a>
                     </div>
 					<div class="menubar">
@@ -101,15 +102,15 @@
 							<div id="text-2" class="widget widget_text list-unstyled">
 								<h5 class="widgettitle">About Us</h5>
 								<div class="textwidget">
-									<p>[Short Description Here]</p>
+									<p>{{$details ? $details->description : null}}</p>
 								</div>
 							</div>
 							<div id="themesbox-social-widget-2" class="widget widget_themesbox_social list-unstyled">
 								<h5 class="widgettitle">Follows Us</h5>
 								<ul class="socials">
-									<li><a href="https://www.facebook.com/#" target="_blank" data-wpel-link="external" rel="external noopener noreferrer">
+									<li><a href="{{$details ? $details->fb : '#'}}" target="_blank" data-wpel-link="external" rel="external noopener noreferrer">
                                         <i class="feather icon-facebook"></i> </a></li>
-									<li><a href="#" target="_blank"> <i class="feather icon-instagram"></i> </a></li>
+									<li><a href="{{$details ? $details->ig : '#'}}" target="_blank"> <i class="feather icon-instagram"></i> </a></li>
 								</ul>
 							</div>
 						</div>
@@ -120,15 +121,20 @@
 								<div class="contact-footer">
 									<ul>
 										<li>05:00 am to 12:30 pm GMT</li>
-										<li><a href="mailto:">xxxxx</a></li>
+										<li><a href="mailto:">{{$details ? $details->phone : '#'}}</a></li>
 									</ul>
 								</div>
 							</div>
 							<div id="media_image-2" class="widget widget_media_image list-unstyled">
-								<h5 class="widgettitle">Donate Securely</h5><img width="255" height="22"
+								<h5 class="widgettitle">Donate Securely</h5>
+                                <img width="255" height="22"
 									src="https://themesbox.in/wp-content/uploads/2019/12/payments.png"
 									class="image wp-image-66  attachment-full size-full" alt="payments" loading="lazy"
 									style="max-width: 100%; height: auto;" />
+                                <h5 class="widgettitle">For Anonymous Donations</h5>
+                                <p><b>Bank:</b> {{$details ? $details->bank_name : null}}</p>
+                                <p><b>Account Number:</b> {{$details ? $details->account_number : null}}</p>
+                                <p><b>Account Name:</b> {{$details ? $details->account_name : null}}</p>
 							</div>
 						</div>
 						<div class="col-lg-2">

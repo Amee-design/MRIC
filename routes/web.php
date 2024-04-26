@@ -58,6 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
     });
     Route::controller(AdminController::class)->group(function () {
         Route::get('/admin/members/{type}', 'members')->name('admin.users');
+        Route::get('/admin/view-profile/{id}', 'profile');
     });
     Route::controller(CategoryController::class)->group(function () {
         Route::post('/admin/addCategory', 'addCategory')->name('admin.addCategory');
@@ -92,11 +93,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::controller(SliderController::class)->group(function () {
         Route::get('/admin/sliders', 'index')->name('admin.sliders');
         Route::post('/admin/save-slider', 'store')->name('admin.saveSlider');
-        Route::post('/admin/delete-slider', 'destroy')->name('admin.deleteSlider');
+        Route::get('/admin/delete-slider/{id}', 'destroy')->name('admin.deleteSlider');
     });
 
     Route::controller(MediaController::class)->group(function () {
-
+        Route::get('/admin/media', 'index')->name('admin.media');
+        Route::post('/admin/save-media', 'store')->name('admin.saveMedia');
+        Route::get('/admin/delete-media/{id}', 'destroy')->name('admin.deleteMedia');
     });
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

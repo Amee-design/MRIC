@@ -81,6 +81,13 @@
                         </li>
 
                         <li>
+                            <a href="{{route('admin.media')}}">
+                                <i class="ri-image-4-fill"></i>
+                                <span>Manage Media</span>
+                            </a>
+                        </li>
+
+                        <li>
                             <a href="javascript:void(0)">
                                 <i class="ri-file-list-line"></i><span>Events</span>
                             <i class="ri-arrow-right-s-line"></i>

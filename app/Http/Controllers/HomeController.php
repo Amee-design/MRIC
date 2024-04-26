@@ -69,16 +69,18 @@ class HomeController extends Controller
     public function contact(){
         $this->updateSiteViews();
         $pages = $this->pages();
+        $latest = Post::latest()->limit(12)->get();
         $details = Setting::first();
-        return view('contact', compact('pages', 'details'));
+        return view('contact', compact('pages', 'latest', 'details'));
     }
 
     public function media(){
         $this->updateSiteViews();
         $pages = $this->pages();
         $details = Setting::first();
+        $latest = Post::latest()->limit(12)->get();
         $media = Media::paginate(12);
-        return view('media', compact('pages', 'details', 'media'));
+        return view('media', compact('pages', 'details', 'latest', 'media'));
     }
 
     public function donation(){

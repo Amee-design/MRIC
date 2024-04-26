@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Page;
+use App\Models\Setting;
 
 class PostController extends Controller
 {
@@ -229,13 +230,16 @@ class PostController extends Controller
         $previousPost = Post::where('id', '<', $post->id)->orderBy('id', 'desc')->first();
         $nextPost = Post::where('id', '>', $post->id)->orderBy('id')->first();
 
+        $details = Setting::first();
+
         return view('view-post', [
             'post' => $post,
             'posts' => $posts,
             'latest' => $latest,
             'previousPost' => $previousPost,
             'nextPost' => $nextPost,
-            'pages' => $pages
+            'pages' => $pages,
+            'details' => $details
         ]);
     }
 
@@ -257,7 +261,9 @@ class PostController extends Controller
 
         $pages = $this->pages();
 
-        return view('category', compact('category', 'events', 'categories', 'latest', 'pages'));
+        $details = Setting::first();
+
+        return view('category', compact('category', 'events', 'categories', 'latest', 'pages', 'details'));
     }
 
     public function blog(Request $request)
@@ -270,6 +276,8 @@ class PostController extends Controller
 
         $pages = $this->pages();
 
-        return view('events', compact('categories', 'events', 'categories', 'latest', 'pages'));
+        $details = Setting::first();
+
+        return view('events', compact('categories', 'events', 'categories', 'latest', 'pages', 'details'));
     }
 }
